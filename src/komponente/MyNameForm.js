@@ -10,18 +10,20 @@ export class NameForm extends React.Component {
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
-    mijenjanjeRijeci() {
+    /*mijenjanjeRijeci() {
       this.props.promijeni(this.state.value);  // this.state.pocetnaRijec
+    }*/
+  
+    onChangeTekst() {
+      this.props.mijenjajTekst(this.state.value);
     }
-  
-  
     handleChange(event) {
       this.setState({
         value: event.target.value
       });
     
-      console.log("Upisali ste:"+event.target.value);
-      this.mijenjanjeRijeci(event.target.value);  //this .mijenjanje
+      console.log("(handleChange)Upisali ste:"+event.target.value);
+      //this.mijenjanjeRijeci(event.target.value);  //this .mijenjanje
       
       }
   
@@ -30,12 +32,12 @@ export class NameForm extends React.Component {
     handleSubmit(event) {
       //alert('Upisali ste rijec: ' + this.state.value);
       event.preventDefault();
-      console.log(this.state.value);
+      console.log("Unutar handleSubmita" + this.state.value);
   
      
       //OVO!
       //this.props.prominiBotun(this.state.value);
-      this.mijenjanjeRijeci.bind(this);
+     // this.mijenjanjeRijeci.bind(this);
       
     }
   
@@ -45,7 +47,7 @@ export class NameForm extends React.Component {
           <textfield>
             Upisi rijec:
             <input type="text" value={this.state.value} onChange={(event) => this.handleChange(event)}/>
-            <button className ="btn btn-primary" onClick = {this.mijenjanjeRijeci.bind(this)}> Mijenjaj </button>
+            
           </textfield>
           <input type="submit" value="Submit" />
         </form>
