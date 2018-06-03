@@ -4,54 +4,47 @@ export class NameForm extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        value: ''
+        value: 'New Word',
+        rijec: 'Evo nove rijeci'
       };
   
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
-    /*mijenjanjeRijeci() {
-      this.props.promijeni(this.state.value);  // this.state.pocetnaRijec
-    }*/
   
     onChangeTekst() {
-      this.props.mijenjajTekst(this.state.value);
+      console.log("Promijenjen tekst!");
+      this.props.mijenjajTekst(this.state.rijec);
+      console.log(this.state.rijec);
     }
+
     handleChange(event) {
       this.setState({
         value: event.target.value
       });
-    
-      console.log("(handleChange)Upisali ste:"+event.target.value);
-      //this.mijenjanjeRijeci(event.target.value);  //this .mijenjanje
-      
+      console.log("(handleChange)Upisali ste:" + event.target.value);
+      this.props.mijenjajTekst(event.target.value);
       }
   
-      //OVO !!!!!!!!!!!!!!!!!!!!!!!!!
-      
     handleSubmit(event) {
-      //alert('Upisali ste rijec: ' + this.state.value);
       event.preventDefault();
-      console.log("Unutar handleSubmita" + this.state.value);
-  
-     
-      //OVO!
-      //this.props.prominiBotun(this.state.value);
-     // this.mijenjanjeRijeci.bind(this);
-      
+      console.log("Unutar handleSubmita:\t" + this.state.value);
     }
   
     render() {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <textfield>
-            Upisi rijec:
-            <input type="text" value={this.state.value} onChange={(event) => this.handleChange(event)}/>
-            
-          </textfield>
-          <input type="submit" value="Submit" />
-        </form>
-        
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <textfield>
+              Upisi rijec:
+              <input type="text" value={this.state.value} onChange={(event) => this.handleChange(event)}/>
+
+            </textfield>
+            <input type="submit" value="Submit" />
+          </form>
+
+          <button className="btn btn-primary" onClick = {this.onChangeTekst.bind(this)}> Mijenjaj tekst </button>
+        </div>
       );
     }
   }

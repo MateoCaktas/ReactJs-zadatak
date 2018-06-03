@@ -5,36 +5,52 @@ export class MyComponent extends React.Component{
       super(props);
       this.state = {
         isToggleOn: true,
-        value: '',
+        value: 'Crna',
         color1: '',
         color2: ''
       };
   
       this.buttonClicked = this.buttonClicked.bind(this);
+      this.promjenaRijeci = this.promjenaRijeci.bind(this);
       
     }
-    buttonClicked(){
-      this.setState(prevState => ({
-        isToggleOn: !prevState.isToggleOn
-  
-      }));
-    }
-  
+
     promjenaRijeci(){
       console.log("Pozvana funkcija promjenaRijeci");
-      console.log(this.state.pocetnaRijec);
-  //    this.props.promijeni(this.state.pocetnaRijec);
     }
-  
+
+    buttonClicked(){
+      if(this.props.vrijednost !== 'Crna' && this.props.vrijednost !== 'Random'){
+        this.setState({
+          value: this.props.vrijednost
+        })
+      }else{
+      this.setState(prevState => ({
+        isToggleOn: !prevState.isToggleOn
+      }));
+      if(this.state.isToggleOn){
+        this.setState({
+          value: 'Crna'
+        })
+      }
+      else if (!this.state.isToggleOn){
+        this.setState({
+          value: 'Random'
+        })
+      }
+    }
+      console.log("Unutar buttonClicked : state => " + this.state.value);
+    }
+    
     render(){
-      
-      return(     
-        <textfield onClick={this.buttonClicked}>
-        {this.state.isToggleOn ? (this.value = 'Crna') : (this.value = 'Random')}
-        {console.log(this.value)}
-          </textfield>
-        
+      return(
+        <textfield onClick={this.buttonClicked}>        
+        {this.state.value}
+        {this.props.vrijednost}
+        {console.log("Value iz app-a:\t " + this.props.vrijednost)}        
+        </textfield>
+          
       );
     }
-  
   }
+

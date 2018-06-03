@@ -7,9 +7,8 @@ import { MyComponent } from './komponente/MyComponent';
 class App extends Component {
   constructor(){
     super();
-    this.state ={
-      
-      value:''
+    this.state = {
+      value: 'Crna'
     }
   }
 
@@ -18,13 +17,16 @@ class App extends Component {
       value: newText
     });
   }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <MyComponent promijeni = {this.state.value}/>
-          <NameForm 
+          <MyComponent 
+          vrijednost = {this.state.value}
+          />
+          <NameForm
           mijenjajTekst = {this.onChangeText.bind(this)}
           />
         </header>
