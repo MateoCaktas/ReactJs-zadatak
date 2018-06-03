@@ -42,7 +42,8 @@ export class MyComponent extends React.Component{
       return(
         <textfield onClick={this.buttonClicked}>        
         {this.state.value}
-       
+        {" - "}
+        {this.props.vrijednost}
         {console.log("Value iz app-a:\t " + this.props.vrijednost)}        
         </textfield>
           
