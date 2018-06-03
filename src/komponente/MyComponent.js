@@ -15,10 +15,6 @@ export class MyComponent extends React.Component{
       
     }
 
-    promjenaRijeci(){
-      console.log("Pozvana funkcija promjenaRijeci");
-    }
-
     buttonClicked(){
       if(this.props.vrijednost !== 'Crna' && this.props.vrijednost !== 'Random'){
         this.setState({
