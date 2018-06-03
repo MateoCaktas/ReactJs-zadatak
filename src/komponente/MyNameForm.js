@@ -5,18 +5,13 @@ export class NameForm extends React.Component {
       super(props);
       this.state = {
         value: 'New Word',
-        rijec: 'Evo nove rijeci'
       };
   
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
   
-    onChangeTekst() {
-      console.log("Promijenjen tekst!");
-      this.props.mijenjajTekst(this.state.rijec);
-      console.log(this.state.rijec);
-    }
+    
 
     handleChange(event) {
       this.setState({
